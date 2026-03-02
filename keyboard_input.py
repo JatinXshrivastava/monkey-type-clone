@@ -40,8 +40,8 @@ def read_keyboard(target , wpm_meter, accuracy_meter) :
             # Clear previous output (200 spaces overwrites old text)
 
             # Print updated typed text
-            print("\r" , end="")
+            # print("\r" , end="")
             print("\r" + typed, end="")
 
-    # print("")
+    print("")
     print(f"WPM: {wpm:.2f} | Accuracy: {accuracy:.2f}% | Errors: {errors}")
