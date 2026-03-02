@@ -6,7 +6,7 @@ wpm_meter= WPMMeter()
 print("Start typing... (press ESC to stop)")
 
 
-def read_keyboard(target , wpm_meter) :
+def read_keyboard(target , wpm_meter, accuracy_meter) :
     typed = ""  
     started = False
     while True:
@@ -32,10 +32,13 @@ def read_keyboard(target , wpm_meter) :
             elif len(key) == 1:   # a-z, 0-9, punctuation
                 typed += key
 
-            wpm = wpm_meter.get_wpm(len(typed)) 
+            wpm = wpm_meter.get_wpm(len(typed))
+            accuracy = accuracy_meter.get_accuracy(typed)
+            errors = accuracy_meter.get_error_count(typed) 
 
-            # print("\r" + " " * 200, end="") 
-            print("\r" + typed + f"         | WPM: {wpm:.2f}" , end="") 
-    
+            print("\r" + " " * 200, end="") 
+            print("\r" + typed , end="") 
+    print("")
+    print(f"WPM: {wpm:.2f}   |   Accuracy: {accuracy:.2f}%   |   Errors: {errors}") 
 
 
