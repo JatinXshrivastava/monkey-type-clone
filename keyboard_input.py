@@ -33,12 +33,15 @@ def read_keyboard(target , wpm_meter, accuracy_meter) :
                 typed += key
 
             wpm = wpm_meter.get_wpm(len(typed))
-            accuracy = accuracy_meter.get_accuracy(typed)
-            errors = accuracy_meter.get_error_count(typed) 
+            accuracy = accuracy_meter.get_raw_accuracy()
+            errors = accuracy_meter.get_error_count() 
 
-            print("\r" + " " * 200, end="") 
-            print("\r" + typed , end="") 
-    print("")
-    print(f"WPM: {wpm:.2f}   |   Accuracy: {accuracy:.2f}%   |   Errors: {errors}") 
+            
+            # Clear previous output (200 spaces overwrites old text)
 
+            # Print updated typed text
+            print("\r" , end="")
+            print("\r" + typed, end="")
 
+    # print("")
+    print(f"WPM: {wpm:.2f} | Accuracy: {accuracy:.2f}% | Errors: {errors}")

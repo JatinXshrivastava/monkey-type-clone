@@ -141,5 +141,4 @@ class TypingCanvas:
                         self.end_time = time.time()
                         continue
             self.draw_text()
-
         pygame.quit()
